@@ -46,10 +46,10 @@ export function sendRegisterInfo(path,dispatch, data,callback){
             },
             body:  data
         }).then(function(res) {
-            //console.log('res is ',res);
+            console.log('res is ',res);
             return res.json();
         }).then(function(result) {
-        	//console.log('result is ',result);
+        	console.log('result is ',result);
             result = result.result;
             if(result.code === '1004'||result.code === '1007'){
                 console.log(result.msg);

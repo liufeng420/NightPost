@@ -35,8 +35,8 @@ class Poster extends Component{
   //   this.props.actions.getComment(this.props.posterInfo);
   // }
   render(){
-    var content;
-    var showDate = new Date(this.state.date).toLocaleString();
+    let content;
+    let showDate = new Date(this.state.date).toLocaleString();
     if(this.state.content.length > 80)
       content = this.state.content.substr(0,80)+'...';
     else

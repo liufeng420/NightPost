@@ -6,4 +6,4 @@
 #modify the running path to your mongod.exe path, so do as --dbpath
 #save it and running this file by double click
 #enjoy yourself!
-d:/MongoDB/bin/mongod.exe --dbpath="d:/MongoDB/data/nightPost" 
+mongod.exe --dbpath="E:/mongo/data/NightPost" 

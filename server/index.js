@@ -1,6 +1,7 @@
 const SERVERPORT ='8001';
 
 var express = require('express');
+var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
 // var index = require('./controller/index');
@@ -53,11 +54,19 @@ app.all('*',function (req, res, next) {
     next();
   }
 });
- 
+
+// 配置routers,全部交由routers/index处理,
+app.use('/', require("./routers/index"));
+
+// 配置模板,使用ejs模板
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile)
+app.set('view engine', 'ejs');
 
 app.post('/register', function (req, res) {
   const username=req.body.username;
   const password=req.body.password;
+  console.log("//register:", username, password);
 
   Dao.userIsExist(mongoDb,'users',username,function(err,result){
     if(err)
@@ -213,6 +222,7 @@ app.post('/getPostNoByDate',function(req,res){
  
 var server = app.listen(SERVERPORT, function () {
  
+	console.log(server.address())
   var host = server.address().address
   var port = server.address().port
  
